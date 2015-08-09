@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+   		<meta charset="utf-8" />
+	    <title>jQuery</title>
+	    <link rel="stylesheet" type="text/css" href="style.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <script type="text/javascript">
+	    	$(document).ready(function(){
+			
+				$('#cardA').hide();
+				$('#cardB').hide();
+	    		
+	    		$(document).on('click', 'button', function(){
+	    			$('#nameA').append($('#firstName').val() + ' ' + ($('#lastName').val()));
+		    		$('.description').append($('#descriptionInput').val());
+		    		console.log($('.description').val());
+	    			$('#cardA').show();
+	    			$('.description').toggle();
+		    		$('#firstName').append('input:text').val('');
+		    		$('#lastName').append('input:text').val('');
+		    		$('#descriptionInput').append('input:text').val('');
+	    			return false;
+	    		});
+				
+				$('#cardA').click(function(){
+	    			$('.description').toggle();
+	    			$('.static').toggle();
+	    			$('#nameA').toggle();
+	    			return false;
+	    		});
+
+			});
+    	</script>
+	</head>
+	<body>
+		<div id="container">
+			<h1 style="text-align:center">Contact Card</h1>
+			<form id="form" action='process.php' method= 'post'>
+				<label id="firstNameLabel">First Name: </label><input id="firstName" type="text"/><br>
+				<label id="lastNameLabel">Last Name: </label><input id="lastName" type="text"/><br>
+				<label id="desriptionLabel">Description: </label>		
+				
+				<div id="descriptionBox">
+					<input id="descriptionInput" type="text"/>
+				</div>
+					<button id="btn" type="submit">Add User</button>
+			</form>
+			<div id="cardA">
+				<h4 id="nameA"></h4>
+				<p class="static">Click for Description!</p>
+				<p class="description"></p>
+			</div>
+			<div id="cardB">
+				<p id="nameB"></p>
+				<p class="static">Click for Description!</p>
+				<p class="description"></p>
+			</div>
+		</div>
+	</body>
+</html>
